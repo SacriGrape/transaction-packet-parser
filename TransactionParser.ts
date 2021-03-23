@@ -6,7 +6,14 @@ import { NativePointer } from "bdsx/native";
 import { PacketBuffer } from "./PacketBuffer"
 import { readFileSync } from "fs";
 
-let netIdMap = JSON.parse(readFileSync("./item_netid.json", "utf8"));
+let netIdMap = JSON.parse(readFileSync("../Transaction-Packet-parser/item_netid.json", "utf8"));
+
+export function parseTransaction(ptr: NativePointer, size: number): InventoryTransactionInfo {
+    let iTP = new InventoryTransactionInfo;
+    iTP.readPacket(ptr, size);
+    return iTP;
+
+}
 
 export abstract class TransactionType {
     abstract transactionId: number; // ID of this transaction, set automatically
@@ -90,7 +97,7 @@ export class ReleaseItemTransaction extends TransactionType{
     }
 }
 
-export class InventoryTransactionPacket {
+export class InventoryTransactionInfo {
     packetId: number; // ID of packet, should be 30
     legacyId: number; // ID for legacy transaction. Should be 0 (wont correctly read if not)
     transactionType: number; // Type of transaction
@@ -103,7 +110,6 @@ export class InventoryTransactionPacket {
         this.packetId = buffer.readUInt8();
         this.legacyId = buffer.readVarInt();
         this.transactionType = buffer.readUVarInt();
-        console.log(this.transactionType);
         this.hasStackIds = buffer.readUInt8();
         this.actionsLength = buffer.readUVarInt();
 
