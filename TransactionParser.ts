@@ -5,8 +5,9 @@ import { Vec3 } from "bdsx/bds/blockpos";
 import { NativePointer } from "bdsx/native";
 import { PacketBuffer } from "./PacketBuffer"
 import { readFileSync } from "fs";
+import { system } from "../example_and_test/bedrockapi-system";
 
-let netIdMap = JSON.parse(readFileSync("../item_netid.json", "utf8"));
+let netIdMap = JSON.parse(readFileSync("./item_netid.json", "utf8"));
 
 export abstract class TransactionType {
     abstract transactionId: number; // ID of this transaction, set automatically
