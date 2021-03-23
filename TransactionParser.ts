@@ -5,8 +5,12 @@ import { Vec3 } from "bdsx/bds/blockpos";
 import { NativePointer } from "bdsx/native";
 import { PacketBuffer } from "./PacketBuffer"
 import { readFileSync } from "fs";
+import { isFile } from "bdsx/util";
 
-let netIdMap = JSON.parse(readFileSync("../Transaction-Packet-parser/item_netid.json", "utf8"));
+if (!isFile("../item_netid.json")) {
+    console.log("[WARNING]".bgRed.black,"You need to download item_netid.json from https://github.com/CloudburstMC/Nukkit/blob/master/src/main/resources/runtime_item_ids.json\nand place it in the root directory of BDSx".bgRed.black);
+}
+let netIdMap = JSON.parse(readFileSync("../item_netid.json", "utf8"));
 
 export function parseTransaction(ptr: NativePointer, size: number): InventoryTransactionInfo {
     let iTP = new InventoryTransactionInfo;
