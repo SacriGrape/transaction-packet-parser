@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@bdsx/transaction-packet-parser</title>
+	<meta name="description" content="Documentation for @bdsx/transaction-packet-parser">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@bdsx/transaction-packet-parser</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@bdsx/transaction-packet-parser</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#transaction-packet-parser-plugin" id="transaction-packet-parser-plugin" style="color: inherit; text-decoration: none;">
+					<h1>transaction-packet-parser Plugin</h1>
+				</a>
+				<p>Plugin for translating the Transaction packet. Made by SacriPudding (discord: SacriPudding#1281)
+				NOTE: THIS PLUGIN DOES NOTHING BY ITSELF. IT JUST TRANSLATES THE PACKET</p>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h1>how to use</h1>
+				</a>
+				<ol>
+					<li><p>install with <code>npm i @bdsx/transaction-packet-parser</code></p>
+					</li>
+					<li><p>download <a href="https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json">this file</a> name it &quot;item_netid.json&quot; and place it in the root directory of your BDSx install</p>
+					</li>
+					<li><p>to access the translator import &quot;parseTransaction&quot; <code>import { parseTransaction } from &quot;@bdsx/transaction-packet-parser/&quot;</code></p>
+					</li>
+					<li><p>use nethook.raw to get a ptr of the plugin (also make sure to get the size)</p>
+					</li>
+					<li><p>Using parseTransaction you can get an object with various bits of info<code>let iTD = parseTransaction(ptr, size);</code></p>
+					</li>
+					<li><p>You are done!</p>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/inventorytransactioninfo.html" class="tsd-kind-icon">Inventory<wbr>Transaction<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtbyte.html" class="tsd-kind-icon">Nbt<wbr>Byte</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtbytearray.html" class="tsd-kind-icon">Nbt<wbr>Byte<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtcompound.html" class="tsd-kind-icon">Nbt<wbr>Compound</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtdouble.html" class="tsd-kind-icon">Nbt<wbr>Double</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtend.html" class="tsd-kind-icon">Nbt<wbr>End</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtfloat.html" class="tsd-kind-icon">Nbt<wbr>Float</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtint.html" class="tsd-kind-icon">Nbt<wbr>Int</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtintarray.html" class="tsd-kind-icon">Nbt<wbr>Int<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtlist.html" class="tsd-kind-icon">Nbt<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtlong.html" class="tsd-kind-icon">Nbt<wbr>Long</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtlongarray.html" class="tsd-kind-icon">Nbt<wbr>Long<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtshort.html" class="tsd-kind-icon">Nbt<wbr>Short</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nbtstring.html" class="tsd-kind-icon">Nbt<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/nbttag.html" class="tsd-kind-icon">Nbt<wbr>Tag</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/packetbuffer.html" class="tsd-kind-icon">Packet<wbr>Buffer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/releaseitemtransaction.html" class="tsd-kind-icon">Release<wbr>Item<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transactionitem.html" class="tsd-kind-icon">Transaction<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transactiontype.html" class="tsd-kind-icon">Transaction<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/useitemonentitytransaction.html" class="tsd-kind-icon">Use<wbr>Item<wbr>OnEntity<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/useitemtransaction.html" class="tsd-kind-icon">Use<wbr>Item<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#nbttagtypes" class="tsd-kind-icon">nbt<wbr>Tag<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#nbttagarraytojson" class="tsd-kind-icon">nbt<wbr>Tag<wbr>Array<wbr>ToJson</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#packetbufferfrombuffer" class="tsd-kind-icon">packet<wbr>Buffer<wbr>From<wbr>Buffer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#parsetransaction" class="tsd-kind-icon">parse<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#readpacketnbt" class="tsd-kind-icon">read<wbr>Packet<wbr>Nbt</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
