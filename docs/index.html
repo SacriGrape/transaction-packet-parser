@@ -59,27 +59,25 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<a href="#transaction-packet-parser-plugin" id="transaction-packet-parser-plugin" style="color: inherit; text-decoration: none;">
-					<h1>transaction-packet-parser Plugin</h1>
+					<h1>Transaction-Packet-Parser Plugin</h1>
 				</a>
-				<p>Plugin for translating the Transaction packet. Made by SacriPudding (discord: SacriPudding#1281)
-				NOTE: THIS PLUGIN DOES NOTHING BY ITSELF. IT JUST TRANSLATES THE PACKET</p>
+				<p>Plugin for translating the transaction packet. Made by SacriPudding (Discord: SacriPudding#1281).</p>
+				<p><strong>NOTE:</strong> This plugin is nothing by itself, it just translates the packet for you to use in your own projects.</p>
 				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
-					<h1>how to use</h1>
+					<h1>How To Use</h1>
 				</a>
-				<ol>
-					<li><p>install with <code>npm i @bdsx/transaction-packet-parser</code></p>
-					</li>
-					<li><p>download <a href="https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json">this file</a> name it &quot;item_netid.json&quot; and place it in the root directory of your BDSx install</p>
-					</li>
-					<li><p>to access the translator import &quot;parseTransaction&quot; <code>import { parseTransaction } from &quot;@bdsx/transaction-packet-parser/&quot;</code></p>
-					</li>
-					<li><p>use nethook.raw to get a ptr of the plugin (also make sure to get the size)</p>
-					</li>
-					<li><p>Using parseTransaction you can get an object with various bits of info<code>let iTD = parseTransaction(ptr, size);</code></p>
-					</li>
-					<li><p>You are done!</p>
-					</li>
-				</ol>
+				<p>You can install this plugin with <code>npm i @bdsx/transaction-packet-parser</code>. You can also use the built in plugin manager for BDSx.</p>
+				<p>If you wish to use my scripts inside of your own plugin (i.e, the NBT reader or packet buffer script) you can find them at the project&#39;s GitHub page <a href="https://github.com/sacripudding/transaction-packet-parser/">here</a>.</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h1>Documentation</h1>
+				</a>
+				<p>You can find the documentation for the different functions and classes <a href="https://sacripudding.github.io/transaction-packet-parser/">here</a>.</p>
+				<p>Source code for the scripts can be found <a href="https://github.com/sacripudding/transaction-packet-parser/">here</a>.</p>
+				<a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
+					<h1>Credits</h1>
+				</a>
+				<p>Item_netID taken from the Nukkit protocol. You can find it <a href="https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json">here</a>.</p>
+				<p>The packet translation was pulled partially from the PMMP documentation and you can find the inventory packet <a href="https://github.com/pmmp/PocketMine-MP/blob/stable/src/pocketmine/network/mcpe/protocol/InventoryTransactionPacket.php">here</a>.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
