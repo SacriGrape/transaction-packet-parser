@@ -7,50 +7,49 @@ import { PacketBuffer } from "./PacketBuffer"
 import { writeFileSync, readFileSync } from "fs";
 import { isFile } from "bdsx/util";
 import { request } from "https";
-import { writeFile } from "node:fs";
 
 let itemMap: any = null;
 
 function getItemMap(callback: (itemMap: Object | null, error: Error | string | null) => void) {
     if (itemMap !== null) {
-        callback(itemMap, null); // In the callback it wouldn't be null because of this
+        callback(itemMap, null); // In the callback it wouldn"t be null because of this
         return;
     }
 
     let req = request("https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json", res => {
-        if (res.statusCode != 200) {
-            callback({}, 'Invalid status code <' + res.statusCode + '>');
+        if (res.statusCode !== 200) {
+            callback({}, "Invalid status code <" + res.statusCode + ">");
             return;
         }
 
-        let body = '';
-        res.on('data', data => {
+        let body = "";
+        res.on("data", data => {
             body += data;
         });
-        res.on('end', () => {
+        res.on("end", () => {
             let json = JSON.parse(body);
-            itemMap = json; // The global variable wouldn't be null because of this
-            callback(itemMap, null); // In the callback it wouldn't be null because of this
+            itemMap = json; // The global variable wouldn"t be null because of this
+            callback(itemMap, null); // In the callback it wouldn"t be null because of this
         });
     });
 
-    req.on('error', error => callback({}, error));
+    req.on("error", error => callback({}, error));
     req.end();
 }
 
 if (!isFile("../item_netid.json")) {
     getItemMap((itemMap, error) => {
         if (error !== null) {
-            console.log("uh oh: " + error);
-            return;
+            console.log(`Error: Failed to fetch ../item_netid.json <${error}>`);
+            throw `Error: Failed to fetch ../item_netid.json <${error}>`
         }
-        console.log(itemMap);
         writeFileSync("../item_netid.json", itemMap);
     });
 }
 
+readFileSync("../item_netid.json");
 
-console.log(JSON.stringify(itemMap));
+
 
 export function parseTransaction(ptr: NativePointer, size: number): InventoryTransactionInfo {
     let iTP = new InventoryTransactionInfo;
@@ -197,9 +196,6 @@ export class TransactionItem {
             return this;
         }
 
-        if (!itemMap) {
-            throw "Error: Item map is null!";
-        }
         this.id = itemMap.find((itemInfo: any) => itemInfo.id === this.netId).name
         this.auxValue = buffer.readVarInt();
         this.data = this.auxValue >> 8;
