@@ -4,52 +4,19 @@ import { NbtTag, readPacketNbt } from "./NbtParser";
 import { Vec3 } from "bdsx/bds/blockpos";
 import { NativePointer } from "bdsx/native";
 import { PacketBuffer } from "./PacketBuffer"
-import { writeFileSync, readFileSync } from "fs";
 import { isFile } from "bdsx/util";
-import { request } from "https";
+import { writeFileSync, readFileSync } from "fs";
+import request from "sync-request";
 
-let itemMap: any = null;
-
-function getItemMap(callback: (itemMap: Object | null, error: Error | string | null) => void) {
-    if (itemMap !== null) {
-        callback(itemMap, null); // In the callback it wouldn"t be null because of this
-        return;
-    }
-
-    let req = request("https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json", res => {
-        if (res.statusCode !== 200) {
-            callback({}, "Invalid status code <" + res.statusCode + ">");
-            return;
-        }
-
-        let body = "";
-        res.on("data", data => {
-            body += data;
-        });
-        res.on("end", () => {
-            let json = JSON.parse(body);
-            itemMap = json; // The global variable wouldn"t be null because of this
-            callback(itemMap, null); // In the callback it wouldn"t be null because of this
-        });
-    });
-
-    req.on("error", error => callback({}, error));
-    req.end();
-}
+let itemMap: any = {};
 
 if (!isFile("../item_netid.json")) {
-    getItemMap((itemMap, error) => {
-        if (error !== null) {
-            console.log(`Error: Failed to fetch ../item_netid.json <${error}>`);
-            throw `Error: Failed to fetch ../item_netid.json <${error}>`
-        }
-        writeFileSync("../item_netid.json", itemMap);
-    });
+    let htmlRequest = request("GET", "https://raw.githubusercontent.com/CloudburstMC/Nukkit/master/src/main/resources/runtime_item_ids.json");
+    itemMap = JSON.parse(htmlRequest.getBody().toString());
+    writeFileSync("../item_netid.json", JSON.stringify(itemMap));
+} else {
+    itemMap = JSON.parse(readFileSync("../item_netid.json", "utf8"));
 }
-
-readFileSync("../item_netid.json");
-
-
 
 export function parseTransaction(ptr: NativePointer, size: number): InventoryTransactionInfo {
     let iTP = new InventoryTransactionInfo;
@@ -121,7 +88,7 @@ export class UseItemOnEntityTransaction extends TransactionType {
     }
 }
 
-export class ReleaseItemTransaction extends TransactionType{
+export class ReleaseItemTransaction extends TransactionType {
     transactionId: number = 4;
     actionType: number;
     hotbarSlot: number;
@@ -155,7 +122,7 @@ export class InventoryTransactionInfo {
         this.hasStackIds = buffer.readUInt8();
         this.actionsLength = buffer.readUVarInt();
 
-        switch(this.transactionType) {
+        switch (this.transactionType) {
             case 2:
                 this.transactionData = new UseItemTransaction();
                 this.transactionData.readTransaction(buffer);
